@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UpdateArticleInput {
-    private Long articleId;
-    private String content;
+  private Long articleId;
+  private String content;
 }

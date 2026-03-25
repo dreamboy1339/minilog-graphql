@@ -1,22 +1,20 @@
 package com.asdf.minilog.graphql.response;
 
+import java.time.OffsetDateTime;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NonNull;
 
-import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
-
 @Data
 @Builder
 public class ArticleResponse {
-    @NonNull private Long articleId;
+  @NonNull private Long articleId;
 
-    @NonNull private String content;
+  @NonNull private String content;
 
-    @NonNull private Long authorId;
+  @NonNull private Long authorId;
 
-    @NonNull private String authorName;
+  @NonNull private String authorName;
 
-    @NonNull private OffsetDateTime createdAt;
+  @NonNull private OffsetDateTime createdAt;
 }

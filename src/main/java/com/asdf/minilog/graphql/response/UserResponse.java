@@ -7,7 +7,6 @@ import lombok.NonNull;
 @Data
 @Builder
 public class UserResponse {
-    @NonNull
-    private Long id;
-    @NonNull private String username;
+  @NonNull private Long id;
+  @NonNull private String username;
 }

@@ -7,9 +7,7 @@ import lombok.NonNull;
 @Builder
 @Data
 public class FollowResponse {
-    @NonNull
-    Long followerId;
+  @NonNull Long followerId;
 
-    @NonNull
-    private Long followeeId;
+  @NonNull private Long followeeId;
 }

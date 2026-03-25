@@ -7,6 +7,7 @@ import com.asdf.minilog.security.JwtRequestFilter;
 // 생성자 주입을 위한 어노테이션
 import org.springframework.beans.factory.annotation.Autowired;
 // 스프링 빈 등록을 위한 어노테이션
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 // 스프링 설정 클래스임을 나타내는 어노테이션
 import org.springframework.context.annotation.Configuration;
@@ -47,6 +48,9 @@ public class SecurityConfig {
   private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
   // 매 요청마다 JWT 토큰을 파싱하고 인증 정보를 SecurityContext에 설정하는 필터
   private JwtRequestFilter jwtRequestFilter;
+
+  @Value("${spring.graphql.graphiql.path}")
+  private String graphiqlPath;
 
   // 생성자 주입: 스프링이 자동으로 JwtAuthenticationEntryPoint와 JwtRequestFilter 빈을 주입
   @Autowired
@@ -97,6 +101,8 @@ public class SecurityConfig {
                     // 사용자 삭제(DELETE /api/v2/user/{userId})는 ROLE_ADMIN 권한을 가진 사용자만 접근 가능
                     .requestMatchers(HttpMethod.DELETE, "/api/v2/user/{userId}")
                     .hasRole("ADMIN")
+                    .requestMatchers("/" + graphiqlPath)
+                    .permitAll()
                     // 위에서 명시하지 않은 나머지 모든 요청은 인증이 필요
                     .anyRequest()
                     .authenticated())
